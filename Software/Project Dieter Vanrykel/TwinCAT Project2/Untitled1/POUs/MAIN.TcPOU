@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="MAIN" Id="{984606e1-3aa0-4fdb-9f51-1d80ad77811d}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	Motion_1	AT %I* 	: BOOL;
+	Motion_2 	AT %I*	: BOOL;
+	Relay_1 	AT %Q*	: BOOL;
+	Relay_2 	AT %Q*	: BOOL;	
+	vDruk_1				: BOOL;
+	vDruk_2				: BOOL;	
+	Druk_1		AT %I*	: BOOL;
+	Druk_2		AT %I*	: BOOL;	
+	LDR_1		AT %I* 	: INT;
+	LDR_2		AT %I* 	: INT;
+	LDR_3		AT %I* 	: INT;
+	LDR_4		AT %I* 	: INT;
+	TOF1			: TOF;
+	F_TRIG1			: F_Trig;
+	
+	lichten_1		: lichten;
+	lichten_2		: lichten;
+	TOF2, TOF3		: TOF;
+	F_TOF2, F_TOF3	: F_Trig;
+
+	Inschakelen_1	: BOOL;
+	ENABLE			: BOOL;
+	TON1: TON;
+	licht1: BOOL;
+	licht2: BOOL;
+	Aanwezigheid: TOF;
+	fAanwezigheid: F_TRIG;
+	Debug: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF Debug THEN
+	lichten_1(
+		Toggle:= vDruk_1 OR Druk_1, 
+		ON:= , 
+		OFF:= fAanwezigheid.Q, 
+		Enable:= NOT(lichten_2.Q), 
+		lamp=> , 
+		Q=> Relay_1);
+		
+	lichten_2(
+		Toggle:= vDruk_2 OR Druk_2, 
+		ON:= , 
+		OFF:= fAanwezigheid.Q, 
+		Enable:= NOT(lichten_1.Q), 
+		lamp=> , 
+		Q=> Relay_2);
+		
+	Aanwezigheid(IN := Motion_1 OR Motion_2, PT := T#5S);
+	fAanwezigheid(CLK:= Aanwezigheid.Q);
+ELSE
+	Relay_1 := Druk_1 OR vDruk_1;
+	Relay_2 := Druk_2 OR vDruk_2;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="305" Count="0" />
+      <LineId Id="331" Count="0" />
+      <LineId Id="306" Count="4" />
+      <LineId Id="300" Count="0" />
+      <LineId Id="311" Count="0" />
+      <LineId Id="319" Count="0" />
+      <LineId Id="314" Count="4" />
+      <LineId Id="312" Count="0" />
+      <LineId Id="320" Count="1" />
+      <LineId Id="324" Count="0" />
+      <LineId Id="328" Count="0" />
+      <LineId Id="333" Count="0" />
+      <LineId Id="335" Count="0" />
+      <LineId Id="334" Count="0" />
+      <LineId Id="330" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

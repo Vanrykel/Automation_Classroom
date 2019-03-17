@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <GVL Name="GVL1" Id="{812b4598-46c3-4a6c-843c-c938bd265cfd}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	
+	
+Lichten AT %Q*: BOOL;
+Aanwezigheidsdetector AT %I*: BOOL;
+Beamer AT %I* : BOOL;
+Projectorscherm AT %Q* : BOOL;
+socketconnectknop AT %I* : BOOL;
+socketsendknop AT %I* : BOOL;
+
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

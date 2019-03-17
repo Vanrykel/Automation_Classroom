@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <!-- <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>-->
+    <FileVersion>1.0.0.0</FileVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{dcfed700-ae7e-4d37-905b-4e1449d9b88f}</ProjectGuid>
+    <SubObjectsSortedByName>True</SubObjectsSortedByName>
+    <Name>Untitled2</Name>
+    <ProgramVersion>3.1.4022.1</ProgramVersion>
+    <Application>{d7b374c1-7d35-4068-86b8-978cda4940b7}</Application>
+    <TypeSystem>{c09d78d3-603e-4437-af41-74861a06a875}</TypeSystem>
+    <Implicit_Task_Info>{53427951-005e-4977-87b0-d01edcd2af10}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{8e7d393d-01c6-4a69-85db-f9438995d013}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{92d86204-ec8c-4b89-bd86-4ac95bae1464}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{8679e11e-b0b8-480a-b83f-0b05fcaebc20}</LibraryReferences>
+    <!--    <OutputType>Exe</OutputType>
+    <RootNamespace>MyApplication</RootNamespace>
+    <AssemblyName>MyApplication</AssemblyName>-->
+  </PropertyGroup>
+  <!-- 
+   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+-->
+</Project>

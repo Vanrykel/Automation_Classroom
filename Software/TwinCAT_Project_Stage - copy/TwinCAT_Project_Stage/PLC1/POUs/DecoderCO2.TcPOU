@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <POU Name="DecoderCO2" Id="{2de5064b-5727-4497-aac1-fa17ded4ea0a}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM DecoderCO2
+VAR
+	FB_Decoder : ERS_CO2_PayloadDecoder;
+	
+	Temperature 	: REAL;		//Temp -3276.8°C - 3276.7°C
+	Humidity 		: BYTE;		//Humidity 0-100%
+	X 				: REAL;		//Acceleration X -128 --> 127 +/-63 = 1G
+	Y 				: REAL;		//Acceleration Y -128 --> 127 +/-63 = 1G
+	Z 				: REAL;		//Acceleration Z -128 --> 127 +/-63 = 1G
+	Light 			: WORD; 	//Light 0 - 65535 Lux
+	Motion 			: BYTE;		//No of motion 0-255
+	Co2				: WORD;		//Co2 0-65535 ppm 
+	Vdd				: WORD;		//VDD 0-65535mV
+	Analog1			: WORD;		//VDD 0-65535mV
+	Lat				: DWORD;	//Latitude binary
+	Lon				: DWORD;	//Longitude binary
+	Pulse1			: WORD;		//Relative pulse count
+	pulseAbs		: DWORD;	//no 0 - 0xFFFFFFFF
+	ExternalTemp	: REAL;		//External temp -3276.5C-->3276.5C
+	Digital			: BYTE;		//Value 1 or 0
+	Distance		: WORD;		//Distance in mm
+	AccMotion		: BYTE;		//Number of vibration/motion
+	IrInternalTemp	: REAL;		//Internal temp -3276.5C - 3276.5C
+	IrExternalTemp	: REAL;		//External temp -3276.5C - 3276.5C
+	Occupancy		: BYTE;		//Data
+	Waterleak		: BYTE;		//Data 0-255
+	Pressure		: REAL;		//Pressure data(hPa)
+	SoundPeak		: BYTE;		//Sound peak
+	SoundAvg		: BYTE;		//Sound average
+	Pulse2			: WORD;		//0 - 0xFFFF
+	PulseAbs2		: DWORD;	//no 0 - 0xFFFFFFFF
+	Analog2			: WORD;		//Voltage in mV
+	ExternalTemp2	: REAL;		//External temp2 -3276.5C - 3276.5C
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[FB_Decoder(dataString := PayloadDecoded);
+
+		Temperature 	:= FB_Decoder.Temperature;
+		Humidity 		:= FB_Decoder.Humidity;
+		X 				:= FB_Decoder.X;
+		Y 				:= FB_Decoder.Y;
+		Z 				:= FB_Decoder.Z;
+		Light 			:= FB_Decoder.Light;		
+		Motion 			:= FB_Decoder.Motion;
+		Co2				:= FB_Decoder.Co2; 
+		Vdd				:= FB_Decoder.Vdd;
+		Analog1			:= FB_Decoder.Analog1;
+		Lat				:= FB_Decoder.Lat;
+		Lon				:= FB_Decoder.Lon;
+		Pulse1			:= FB_Decoder.Pulse1;
+		pulseAbs		:= FB_Decoder.pulseAbs;
+		ExternalTemp	:= FB_Decoder.ExternalTemp;
+		Digital			:= FB_Decoder.Digital;
+		Distance		:= FB_Decoder.Distance;
+		AccMotion		:= FB_Decoder.AccMotion;
+		IrInternalTemp	:= FB_Decoder.IrInternalTemp;
+		IrExternalTemp	:= FB_Decoder.IrExternalTemp;
+		Occupancy		:= FB_Decoder.Occupancy;
+		Waterleak		:= FB_Decoder.Waterleak;
+		Pressure		:= FB_Decoder.Pressure;
+		SoundPeak		:= FB_Decoder.SoundPeak;
+		SoundAvg		:= FB_Decoder.SoundAvg;
+		Pulse2			:= FB_Decoder.Pulse2;
+		PulseAbs2		:= FB_Decoder.PulseAbs2;
+		Analog2			:= FB_Decoder.Analog2;
+		ExternalTemp2	:= FB_Decoder.ExternalTemp2;
+]]></ST>
+    </Implementation>
+    <LineIds Name="DecoderCO2">
+      <LineId Id="40" Count="30" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

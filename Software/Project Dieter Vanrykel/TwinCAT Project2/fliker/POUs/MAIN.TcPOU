@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <POU Name="MAIN" Id="{89b2c53f-0616-4836-8cc0-da1c1adc3212}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	tofftime : TON;
+	tontime: TOF;
+	Q: BOOL;
+	Q2: BOOL;
+	push AT %I* : BOOL;
+	arrWaarde : ARRAY[1..2,1..10] OF STRING;
+	fbTime : FB_LocalSystemTime := ( bEnable := TRUE, dwCycle := 1 );
+	trigger: F_TRIG;
+	X: INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbTime();
+trigger(CLK:= push);
+tofftime(IN:= NOT Q, PT:= t#1s, Q=> Q2, ET=> );
+tontime(IN:= Q2 , PT:= t#5s, Q=> Q, ET=> );
+
+IF trigger.Q THEN
+	FOR X :=10 TO 1 BY -1 DO
+		arrWaarde[1,X] := arrWaarde[1,X-1];
+		arrWaarde[2,X] := arrWaarde[2,X-1];
+	END_FOR;
+	arrWaarde[1,1] := SYSTEMTIME_TO_STRING(fbTime.systemTime);
+	arrWaarde[2,1] := BOOL_TO_STRING(Q) ;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="12" Count="12" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

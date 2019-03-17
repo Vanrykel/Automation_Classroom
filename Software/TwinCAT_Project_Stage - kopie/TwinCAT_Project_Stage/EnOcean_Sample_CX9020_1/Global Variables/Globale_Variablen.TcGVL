@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <GVL Name="Globale_Variablen" Id="{1cdc703f-fe2e-43a1-b5a3-f8ff59eca696}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+	st6581Input  AT %I* : KL6581_Input;
+	st6581Output AT %Q* : KL6581_Output;
+	stKL6581            : STR_KL6581;
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

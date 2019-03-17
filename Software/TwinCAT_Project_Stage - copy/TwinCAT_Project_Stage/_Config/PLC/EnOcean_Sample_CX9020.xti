@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4022.16" ClassName="CNestedPlcProjDef">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{EC8B44BB-6E49-45C0-A11F-F9FB8203DD5A}" Namespace="Tc2_EnOcean" AutoDeleteType="true">KL6581_Input</Name>
+			<BitSize>96</BitSize>
+			<SubItem>
+				<Name>nStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CNODE</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ORG</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>24</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>40</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>56</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>72</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>80</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>STATUS</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>88</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{BF498E41-72AB-448E-8980-DA7EEECF7DD7}" Namespace="Tc2_EnOcean" AutoDeleteType="true">KL6581_Output</Name>
+			<BitSize>96</BitSize>
+			<SubItem>
+				<Name>nControl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CNODE</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ORG</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>24</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>40</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>56</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>72</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>80</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>STATUS</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>88</BitOffs>
+			</SubItem>
+		</DataType>
+	</DataTypes>
+	<Project GUID="{B24492AE-4023-4AE2-8B52-03EA58CF3D17}" Name="EnOcean_Sample_CX9020" PrjFilePath="EnOcean_Sample_CX9020\EnOcean_Sample_CX9020.plcproj" TmcFilePath="EnOcean_Sample_CX9020\EnOcean_Sample_CX9020.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e" SymbolicMapping="true">
+		<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="EnOcean_Sample_CX9020\EnOcean_Sample_CX9020.tmc">
+			<Name>EnOcean_Sample_CX9020 Instance</Name>
+			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+			<Vars VarGrpType="1">
+				<Name>Standard Inputs</Name>
+				<Var>
+					<Name>.st6581Input</Name>
+					<Type GUID="{EC8B44BB-6E49-45C0-A11F-F9FB8203DD5A}" Namespace="Tc2_EnOcean">KL6581_Input</Type>
+				</Var>
+			</Vars>
+			<Vars VarGrpType="2">
+				<Name>Standard Outputs</Name>
+				<Var>
+					<Name>.st6581Output</Name>
+					<Type GUID="{BF498E41-72AB-448E-8980-DA7EEECF7DD7}" Namespace="Tc2_EnOcean">KL6581_Output</Type>
+				</Var>
+			</Vars>
+			<TaskPouOids>
+				<TaskPouOid Prio="20" OTCID="#x08502041"/>
+			</TaskPouOids>
+		</Instance>
+	</Project>
+	<Mappings>
+		<OwnerA Name="EnOcean_Sample_CX9020 Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Box 4 (BK1250)">
+				<Link VarA="Standard Inputs^.st6581Input^CNODE" VarB="Term 2 (KL6581)^Channel 1^Input CNODE"/>
+				<Link VarA="Standard Inputs^.st6581Input^DB0" VarB="Term 2 (KL6581)^Channel 1^Input DB0"/>
+				<Link VarA="Standard Inputs^.st6581Input^DB1" VarB="Term 2 (KL6581)^Channel 1^Input DB1"/>
+				<Link VarA="Standard Inputs^.st6581Input^DB2" VarB="Term 2 (KL6581)^Channel 1^Input DB2"/>
+				<Link VarA="Standard Inputs^.st6581Input^DB3" VarB="Term 2 (KL6581)^Channel 1^Input DB3"/>
+				<Link VarA="Standard Inputs^.st6581Input^ID0" VarB="Term 2 (KL6581)^Channel 1^Input ID0"/>
+				<Link VarA="Standard Inputs^.st6581Input^ID1" VarB="Term 2 (KL6581)^Channel 1^Input ID1"/>
+				<Link VarA="Standard Inputs^.st6581Input^ID2" VarB="Term 2 (KL6581)^Channel 1^Input ID2"/>
+				<Link VarA="Standard Inputs^.st6581Input^ID3" VarB="Term 2 (KL6581)^Channel 1^Input ID3"/>
+				<Link VarA="Standard Inputs^.st6581Input^ORG" VarB="Term 2 (KL6581)^Channel 1^Input ORG"/>
+				<Link VarA="Standard Inputs^.st6581Input^STATUS" VarB="Term 2 (KL6581)^Channel 1^Input STATUS"/>
+				<Link VarA="Standard Inputs^.st6581Input^nStatus" VarB="Term 2 (KL6581)^Channel 1^Status"/>
+				<Link VarA="Standard Outputs^.st6581Output^CNODE" VarB="Term 2 (KL6581)^Channel 1^Output CNODE"/>
+				<Link VarA="Standard Outputs^.st6581Output^DB0" VarB="Term 2 (KL6581)^Channel 1^Output DB0"/>
+				<Link VarA="Standard Outputs^.st6581Output^DB1" VarB="Term 2 (KL6581)^Channel 1^Output DB1"/>
+				<Link VarA="Standard Outputs^.st6581Output^DB2" VarB="Term 2 (KL6581)^Channel 1^Output DB2"/>
+				<Link VarA="Standard Outputs^.st6581Output^DB3" VarB="Term 2 (KL6581)^Channel 1^Output DB3"/>
+				<Link VarA="Standard Outputs^.st6581Output^ID0" VarB="Term 2 (KL6581)^Channel 1^Output ID0"/>
+				<Link VarA="Standard Outputs^.st6581Output^ID1" VarB="Term 2 (KL6581)^Channel 1^Output ID1"/>
+				<Link VarA="Standard Outputs^.st6581Output^ID2" VarB="Term 2 (KL6581)^Channel 1^Output ID2"/>
+				<Link VarA="Standard Outputs^.st6581Output^ID3" VarB="Term 2 (KL6581)^Channel 1^Output ID3"/>
+				<Link VarA="Standard Outputs^.st6581Output^ORG" VarB="Term 2 (KL6581)^Channel 1^Output ORG"/>
+				<Link VarA="Standard Outputs^.st6581Output^STATUS" VarB="Term 2 (KL6581)^Channel 1^Output STATUS"/>
+				<Link VarA="Standard Outputs^.st6581Output^nControl" VarB="Term 2 (KL6581)^Channel 1^Control"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmItem>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <POU Name="Aanwezigheids_lichten" Id="{8b76a270-81e9-4a90-9705-96adc9cad0aa}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Aanwezigheids_lichten
+VAR
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF GVL1.Aanwezigheidsdetector = FALSE THEN
+	GVL1.Lichten := TRUE;
+END_IF
+IF GVL1.Aanwezigheidsdetector = TRUE THEN
+	GVL1.Lichten := FALSE;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="Aanwezigheids_lichten">
+      <LineId Id="5" Count="0" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="20" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

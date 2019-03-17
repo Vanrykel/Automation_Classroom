@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <POU Name="EnOcean" Id="{416485e7-d5b1-473f-86b5-f5ce6a4f6d2d}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM EnOcean
+
+VAR
+	
+FBRECEX: FB_Rec_Teach_In_Ex;
+
+
+rxD: FB_KL6581;
+fbkl6581: FB_KL6581;
+	
+stKL6581_in AT %I* : KL6581_Input;
+stKL6581_out AT %Q* : KL6581_Output; 
+
+
+testvar2: INT;
+	generic1: FB_Rec_1BS;
+	generic2: FB_Rec_1BS;
+END_VAR
+
+
+
+VAR_INPUT 
+	//84246605
+	//84246441
+//fbkl6581
+bInit             : BOOL;
+nIdx              : USINT := 2;
+
+
+//FBRECEX
+	
+bStart            : BOOL;
+byNode            : BYTE;
+str_KL6581        : STR_KL6581;
+DeviceID : DWORD := 0;
+testvar : INT := 0;
+
+dw_ID                  : DWORD;
+
+END_VAR
+
+
+
+VAR_OUTPUT
+	
+
+bReady            : BOOL;
+bBusy             : BOOL;
+bError            : BOOL;
+iErrorID          : E_KL6581_Err;
+
+	
+
+	
+bLearnType        : BOOL;
+by_Node           : BYTE;
+
+str_Teach_In      : STR_Teach;
+bReceive          : BOOL := TRUE;
+bReceive2         : BOOL := TRUE;
+
+
+raam1open          : BOOL;
+raam1gesloten          : BOOL;
+bLRN            : BOOL;
+
+raam2open         : BOOL;
+raam2gesloten         : BOOL;
+bLRN2           : BOOL;
+
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+fbkl6581(
+	bInit:= TRUE , 
+	nIdx:= nIdx, 
+	bReady=> bReady, 
+	bBusy=> bBusy, 
+	bError=> bError, 
+	iErrorID=> iErrorID, 
+	str_KL6581=> str_KL6581, 
+	
+	stKL6581_in:= stKL6581_in, 
+	stKL6581_out:= stKL6581_out);
+	
+	
+
+FBRECEX(
+	bStart:= TRUE, 
+	byNode:= 0,
+	str_KL6581:= str_KL6581, 
+	bLearnType=> , 
+	by_Node=>by_node, 
+	dw_ID=>DeviceID, 
+	str_Teach_In=> str_Teach_In , );
+	//bReceive=>bReceive );
+	
+	
+	generic1(
+	str_KL6581:= str_KL6581  , 
+	byNode:= 0, 
+	dw_ID:= 84246605, 
+	bOpen=> raam1open, 
+	bClose=> raam1gesloten, 
+	bLRN=> bLRN2, 
+	by_Node=> , 
+	bReceive=>bReceive );
+	
+	generic2(
+	str_KL6581:= str_KL6581  , 
+	byNode:= 0, 
+	dw_ID:= 84246441, 
+	bOpen=> raam2open, 
+	bClose=> raam2gesloten, 
+	bLRN=> bLRN, 
+	by_Node=> , 
+	bReceive=> bReceive2);
+	
+	
+	
+	
+	
+
+
+	]]></ST>
+    </Implementation>
+    <LineIds Name="EnOcean">
+      <LineId Id="208" Count="0" />
+      <LineId Id="212" Count="7" />
+      <LineId Id="328" Count="0" />
+      <LineId Id="220" Count="0" />
+      <LineId Id="209" Count="0" />
+      <LineId Id="256" Count="1" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="160" Count="7" />
+      <LineId Id="92" Count="0" />
+      <LineId Id="331" Count="0" />
+      <LineId Id="338" Count="0" />
+      <LineId Id="341" Count="7" />
+      <LineId Id="339" Count="0" />
+      <LineId Id="350" Count="0" />
+      <LineId Id="352" Count="9" />
+      <LineId Id="351" Count="0" />
+      <LineId Id="332" Count="3" />
+      <LineId Id="279" Count="0" />
+      <LineId Id="53" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

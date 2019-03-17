@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <DUT Name="ST_MoteTx" Id="{60e54421-5fea-426e-bb4d-b44cae3bafb1}">
+    <Declaration><![CDATA[TYPE ST_MoteTx :
+STRUCT
+	Freq	: DINT ;
+	Modu	: STRING(20);
+	Datr	: STRING(20);
+	Codr	: STRING(20);
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

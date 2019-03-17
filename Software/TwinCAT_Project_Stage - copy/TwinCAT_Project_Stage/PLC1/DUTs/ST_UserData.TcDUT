@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <DUT Name="ST_UserData" Id="{1cc251ae-62d1-49e6-9ffc-f32d593df159}">
+    <Declaration><![CDATA[TYPE ST_UserData :
+STRUCT
+	SeqNo	: DINT;
+	Port	: DINT;
+	Payload	: STRING;
+	Payload2: DINT;
+	MoteTx	: ST_MoteTx;
+	Gwrx : ST_Gwrx;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="hysterisis" Id="{365db65f-c3c8-4fd0-8d42-5269775de037}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK hysterisis
+VAR_INPUT
+	IN		: INT;
+	thresh	: INT;
+	variatie: INT;
+END_VAR
+VAR_OUTPUT
+	UP		: BOOL;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF IN > (thresh + variatie) THEN
+	UP := TRUE;
+ELSIF IN < (thresh - variatie) THEN
+	UP := FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="hysterisis">
+      <LineId Id="9" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

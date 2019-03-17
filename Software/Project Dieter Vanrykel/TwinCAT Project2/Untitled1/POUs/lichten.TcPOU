@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="lichten" Id="{11dffa0e-0bd9-4182-a8c0-07e0ca83ba60}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK lichten
+VAR_INPUT
+	Toggle 	: BOOL;
+	ON 		: BOOL;
+	OFF		: BOOL;
+	Enable 	: BOOL;
+END_VAR
+VAR_OUTPUT
+	lamp 	: BOOL;
+	Q		: BOOL;	// puls 100ms
+END_VAR
+VAR
+	pLamp	: BOOL;
+	pToggle : BOOL;
+	pON 	: BOOL;
+	pOFF	: BOOL;
+	puls	: TP;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[pLamp := lamp;
+
+IF Toggle THEN pToggle := TRUE; END_IF
+IF ON THEN pON := TRUE; END_IF
+IF OFF THEN pOFF := TRUE; END_IF
+
+IF Enable AND NOT(puls.Q) THEN
+	IF pON THEN lamp := TRUE; pON := FALSE;
+	ELSIF pOFF THEN lamp := FALSE; pOFF := FALSE;
+	ELSIF pToggle THEN lamp := NOT lamp; pToggle := FALSE;
+	END_IF;
+END_IF
+
+IF lamp <> pLamp THEN puls.IN := TRUE; ELSE puls.IN := FALSE; END_IF
+
+puls(PT := T#250MS, Q => Q);]]></ST>
+    </Implementation>
+    <LineIds Name="lichten">
+      <LineId Id="96" Count="0" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="111" Count="2" />
+      <LineId Id="97" Count="1" />
+      <LineId Id="115" Count="0" />
+      <LineId Id="100" Count="1" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="102" Count="3" />
+      <LineId Id="42" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

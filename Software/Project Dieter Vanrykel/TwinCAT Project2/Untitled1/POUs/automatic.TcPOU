@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="automatic" Id="{42be8525-c00d-4368-b96c-2cea286f2f01}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK automatic
+VAR_INPUT
+	LDR1, LDR2		: INT;
+	LDR_threshold	: INT;
+	LDR_duty		: INT;
+	motion			: BOOL;
+END_VAR
+VAR_OUTPUT
+	fQ	: BOOL;
+	rQ	: BOOL;
+END_VAR
+VAR
+	Motion_ton	: TON;
+	Motion_tof	: TOF;
+	LDR_tof		: TOF;
+	fTRIG: F_TRIG;
+	rTRIG: R_TRIG;
+	LDR_low: BOOL;
+	hys1: hysterisis;
+	hys2: hysterisis;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Motion_ton( IN := motion, PT := T#1S );
+Motion_tof( IN := Motion_ton.Q, PT := T#5M );
+
+hys1(IN:= LDR1, thresh:= LDR_threshold, variatie:= LDR_duty );
+hys2(IN:= LDR2, thresh:= LDR_threshold, variatie:= LDR_duty );
+
+IF Motion_tof.Q THEN
+	IF (hys1.UP) AND NOT(hys2.UP) ) THEN
+	IF (LDR1 < LDR_threshold) OR (LDR2 < LDR_threshold) THEN
+		LDR_low := TRUE;
+	ELSIF (LDR1 > LDR_threshold) OR (LDR2 < LDR_threshold)
+		LDR_tof.IN := FALSE;
+	END_IF
+ELSE
+	LDR_tof.IN := FALSE;
+END_IF
+
+LDR_tof( PT := T#1M );
+
+fTRIG(CLK := LDR_tof.Q ,Q=> );
+rTRIG(CLK := LDR_tof.Q ,Q=> );
+]]></ST>
+    </Implementation>
+    <LineIds Name="automatic">
+      <LineId Id="51" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="122" Count="0" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="67" Count="2" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="112" Count="1" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="107" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

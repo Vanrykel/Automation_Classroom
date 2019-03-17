@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="beamer" Id="{ccb4e1f8-6df0-477e-a845-64960ccf4a12}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM beamer
+
+VAR
+	fbsocketsend: FB_SocketSend;
+	bconnect AT %I* : BOOL;
+	test : int;
+	clientserver: FB_ClientServerConnection;
+	Beamerstand: LINT;
+	BeamerAANKNOP: BOOL;
+	BeamerUITKNOP: BOOL;
+	bENABLE: BOOL;
+END_VAR
+
+VAR_INPUT
+	nMode           	: DWORD := 16#8000000;
+	BeamerON    		: LINT := 16#020000000002;
+	BeamerOFF 			: LINT := 16#020100000003;
+	beamerINPUTCHANGE 	: LINT :=16#020300000201060E;
+	sSrvNetId       	: T_AmsNetId := '5.52.70.129.1.1';
+	sRemoteHost     	: STRING(15) := '192.168.1.100';
+    nRemotePort     	: UDINT := 7142;
+    bExecute         	: BOOL;
+    tTimeout            : TIME := T#45S;
+	tReconnect      	: TIME := T#45S;(*!!!*)
+
+	//socketsend       
+    cbLen           : UDINT;                        
+    pSrc            : DWORD;       
+END_VAR  
+
+VAR_OUTPUT
+	bBusy           : BOOL;
+    bError          : BOOL;
+    nErrId          : UDINT;
+	nErrId2         : UDINT;
+    hSocket        	: T_HSOCKET;
+	eState          : E_SocketConnectionState := eSOCKET_DISCONNECTED;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[clientserver(
+	sSrvNetID:= '', 
+	nMode:=CONNECT_MODE_ENABLEDBG , 
+	sRemoteHost:= sremoteHost , 
+	nRemotePort:= nremoteport, 
+	bEnable:= TRUE, 
+	tReconnect:= tReconnect, 
+	bBusy=> , 
+	bError=> ,
+	nErrId=>nErrId , 
+	hSocket=>hsocket , 
+	eState=> eState
+);
+	
+IF 		BeamerUITKNOP = TRUE THEN Beamerstand := BeamerOFF;
+ELSIF 	BeamerAANKNOP = TRUE THEN Beamerstand := BeamerON;
+ELSE	Beamerstand := 0; 	 END_IF
+
+IF NOT clientserver.bBusy AND clientserver.bEnable AND NOT clientserver.bError THEN
+	fbsocketsend(
+		sSrvNetId:='' , 
+		hSocket:= clientserver.hSocket, 
+		cbLen:= 50, 
+		pSrc:= ADR(Beamerstand), 
+		bExecute:= BeamerUITKNOP OR BeamerAANKNOP , 
+		tTimeout:=tTimeout , 
+		bBusy=> bBusy , 
+		bError=> bError, 
+		nErrId=> nErrId2
+	);
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="beamer">
+      <LineId Id="6" Count="11" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="158" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="165" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="42" Count="9" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="170" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

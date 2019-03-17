@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <GVL Name="GVL1" Id="{812b4598-46c3-4a6c-843c-c938bd265cfd}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	
+//lichtsturing
+LichtenRAAMKANT AT %Q*: BOOL;
+LichtenDEURKANT AT %Q*: BOOL;
+
+AanwezigheidsdetectorRAAMKANT AT %I*: BOOL;
+AanwezigheidsdetectorDEURKANT AT %I*: BOOL;
+
+LichtsterkteDEUR AT %I*: INT;
+LichtsterkteDEUR2 AT %I*: INT;
+LichtsterkteBORD AT %I*: INT;
+lichtsterkteBORD2 AT %I*: INT;
+LINKERKNOP AT %I* : BOOL;
+RECHTERKNOP AT %I* : BOOL;
+
+
+//beamer & projectorschermsturing
+
+BeamerAANKNOP AT %I* : BOOL;
+BeamerUITKNOP AT %I* : BOOL;
+Projectorscherm AT %Q* : BOOL;
+
+
+
+socketconnectknop AT %I* : BOOL;
+socketsendknop AT %I* : BOOL;
+
+
+
+//raamsturing
+
+
+stKL6581            : STR_KL6581;
+
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

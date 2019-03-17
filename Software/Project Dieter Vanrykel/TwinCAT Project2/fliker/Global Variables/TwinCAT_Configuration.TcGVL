@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <GVL Name="TwinCAT_Configuration" Id="{c330103e-6c9d-4982-9b7a-d9f81272a447}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+(* Generated automatically by TwinCAT - (read only) *)
+VAR_CONFIG
+	MAIN.push AT %IX0.0 : BOOL;	(*  ~ {LinkedWith:TIID^Device 2 (EtherCAT (v2.10 only))^Term 1 (EK1100)^Term 2 (EL1008)^Channel 2^Input} *)
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <GlobalTextList Name="GlobalTextList" Id="{90682728-4f96-4b40-88d6-f0f3a32a9bf3}">
+    <XmlArchive>
+      <Data>
+        <o xml:space="preserve" t="GlobalTextListObject">
+          <l n="TextList" t="ArrayList" cet="TextListRow">
+            <o>
+              <v n="TextID">"820"</v>
+              <v n="TextDefault">"Bar : %d"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"42"</v>
+              <v n="TextDefault">"Beamer OFF"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"198"</v>
+              <v n="TextDefault">"Beamer ON"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"817"</v>
+              <v n="TextDefault">"Close"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"831"</v>
+              <v n="TextDefault">"Conection"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"492"</v>
+              <v n="TextDefault">"Connect"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"830"</v>
+              <v n="TextDefault">"Create"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"833"</v>
+              <v n="TextDefault">"Datum/Tijd : %s"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"787"</v>
+              <v n="TextDefault">"Deurkant"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"828"</v>
+              <v n="TextDefault">"Error"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"822"</v>
+              <v n="TextDefault">"Humidity : %d %"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"823"</v>
+              <v n="TextDefault">"Level x : %d"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"824"</v>
+              <v n="TextDefault">"Level y : %d"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"825"</v>
+              <v n="TextDefault">"Level z : %d"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"818"</v>
+              <v n="TextDefault">"Mesage ID : %d"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"816"</v>
+              <v n="TextDefault">"Payload : %s"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"774"</v>
+              <v n="TextDefault">"Raamkant"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"815"</v>
+              <v n="TextDefault">"Recieve"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"829"</v>
+              <v n="TextDefault">"Sensor ID : %s"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"819"</v>
+              <v n="TextDefault">"Status : %d"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"821"</v>
+              <v n="TextDefault">"Temp : %.2f °c"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"832"</v>
+              <v n="TextDefault">"Type sensor : "</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"826"</v>
+              <v n="TextDefault">"VibAmp : %d"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"827"</v>
+              <v n="TextDefault">"VidFreq : %d"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+          </l>
+          <l n="Languages" t="ArrayList" />
+          <v n="GuidInit">{d26b7343-3170-4eb5-bc13-05dd5068c587}</v>
+          <v n="GuidReInit">{8535c0f1-a968-4390-ae22-904e2d235105}</v>
+          <v n="GuidExitX">{e3e64f6a-5ee3-4b7a-9b89-0bc5f09888b7}</v>
+        </o>
+      </Data>
+      <TypeList>
+        <Type n="ArrayList">System.Collections.ArrayList</Type>
+        <Type n="GlobalTextListObject">{63784cbb-9ba0-45e6-9d69-babf3f040511}</Type>
+        <Type n="Guid">System.Guid</Type>
+        <Type n="String">System.String</Type>
+        <Type n="TextListRow">{53da1be7-ad25-47c3-b0e8-e26286dad2e0}</Type>
+      </TypeList>
+    </XmlArchive>
+  </GlobalTextList>
+</TcPlcObject>

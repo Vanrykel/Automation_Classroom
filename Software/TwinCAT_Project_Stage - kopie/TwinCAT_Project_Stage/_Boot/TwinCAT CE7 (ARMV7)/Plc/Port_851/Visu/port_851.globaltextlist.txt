@@ -1,0 +1,5 @@
+Id;Default
+42;Beamer OFF
+198;Beamer ON
+787;Deurkant
+774;Raamkant

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <POU Name="Tcp_ip" Id="{b417fe07-886e-4ff9-bb04-feb950aae720}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Tcp_ip
+VAR
+	bConnect: BOOL;
+	bRecieve: BOOL;
+	FB_create: FB_SocketUdpCreate;
+	FB_Recieve: FB_SocketUdpReceiveFrom;
+	FB_close: FB_SocketClose;
+	data : ARRAY[0..500] OF BYTE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[FB_create(
+	sSrvNetId:= , 							//Lokaal netwerk (mag leeg blijven)
+	sLocalHost:= '192.168.0.104', 			//Eigen ip van de PC en ingesteld in de gateway
+	nLocalPort:= 811,						//Ingesteld op de gateway
+	bExecute:= bConnect,					//Trigger voor functieblok
+	tTimeout:= T#45S);
+	
+
+FB_Recieve(
+	sSrvNetId:= , 									//Lokaal netwerk (mag leeg blijven)
+	hSocket:= FB_create.hSocket,					 
+	cbLen:= SIZEOF(data), 							//Kijkt naar de lengte van het bericht
+	pDest:= ADR(data), 								//Plaat waar de het bericht wordt opgeslaan
+	bExecute:= NOT FB_recieve.bBusy AND bRecieve, 	//Trigger voor functieblok
+	tTimeout:= T#45S);
+	
+FB_close(
+	sSrvNetId:= , 							//Lokaal netwerk (mag leeg blijven)
+	hSocket:= FB_create.hSocket, 			
+	bExecute:= NOT bConnect, 				//Sluiten van de connectie 
+	tTimeout:= T#45S);
+	
+IF FB_Recieve.nRecBytes > 0 THEN 										//Dit gebuert op het moment dat er data binnenkomt
+	memcpy(ADR(sDatastring),ADR(data),FB_Recieve.nRecBytes);			//Het bericht zal worden opgeslaan in Datastring
+	memcpy(ADR(sDatastring) + FB_Recieve.nRecBytes,ADR(NullByte),1);	//Nullbyte word gedetecteerd stoppen met bericht plaatsen
+	Json_XML();															//Oproepen POU Json_XML - MOET hier anders bluescreen
+	Decoder();
+	DecoderCO2();															//Oproepen POU Decoder  - MOET hier anders bluescreen
+END_IF
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="Tcp_ip">
+      <LineId Id="15" Count="31" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

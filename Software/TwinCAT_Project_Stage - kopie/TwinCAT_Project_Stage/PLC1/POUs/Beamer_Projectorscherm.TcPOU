@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <POU Name="Beamer_Projectorscherm" Id="{52e79f17-8022-4cf5-ba2b-e27f9932d3b0}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Beamer_Projectorscherm
+VAR
+BeamerTCPPOORT : INT := 7142;	
+BeamerStatusREQ : LINT := 16#008800000088;
+
+
+BeamerAAN : LINT := 16#020000000002;
+BeamerUIT : LINT := 16#020100000003;
+BeamerINPUTCHANGE : LINT := 16#020300000201;
+
+
+//VAR_INPUT
+     //   sSrvNetId       : T_AmsNetId := '';    
+     //   hSocket         : T_HSOCKET;          
+     //   cbLen           : UDINT;                        
+      //  pDest           : DWORD;                        
+     //   bExecute                : BOOL;                 
+     //   tTimeout                : TIME := T#5s;         
+//END_VAR
+
+VAR_OUTPUT
+        bBusy           : BOOL;
+        bError          : BOOL;
+        nErrId          : UDINT;
+        nRecBytes       : UDINT;                        
+END_VAR
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+//IF GVL1.BEAMERAANKNOP = TRUE THEN BEAMER ON
+		//
+//END_IF
+
+
+
+IF gvl1.Beamer = TRUE THEN
+	GVl1.Projectorscherm := TRUE;
+END_IF
+
+IF gvl1.Beamer = FALSE THEN
+	GVl1.Projectorscherm := FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Beamer_Projectorscherm">
+      <LineId Id="20" Count="1" />
+      <LineId Id="26" Count="1" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="23" Count="1" />
+      <LineId Id="5" Count="2" />
+      <LineId Id="12" Count="2" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

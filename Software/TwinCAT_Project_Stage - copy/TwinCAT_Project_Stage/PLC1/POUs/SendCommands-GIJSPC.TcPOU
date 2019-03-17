@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <POU Name="SendCommands" Id="{8a796357-d5f5-4bfd-9c3d-8a0926e64f1e}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM SendCommands 
+VAR
+	
+END_VAR
+
+//socketconnect
+VAR_INPUT
+        sSrvNetId       : T_AmsNetId := '192.168.10.15';
+        sRemoteHost     : STRING(15);
+        nRemotePort     : UDINT;
+        bExecute                : BOOL;
+        tTimeout                : TIME := T#45s;(*!!!*)
+END_VAR
+
+VAR_OUTPUT
+        bBusy           : BOOL;
+        bError          : BOOL;
+        nErrId          : UDINT;
+        hSocket         : T_HSOCKET;
+END_VAR
+
+
+
+//sockettsend
+VAR_INPUT
+        sSrvNetId2    : T_AmsNetId := '192.168.10.15';    
+        hSocket2	      : T_HSOCKET;          
+        cbLen           : UDINT;                        
+        pSrc            : DWORD;                        
+        bExecute2                : BOOL;                 
+        tTimeout2               : TIME := T#5S;         
+END_VAR
+
+VAR_OUTPUT
+        bBusy2           : BOOL;
+        bError2         : BOOL;
+        nErrId2          : UDINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+
+sRemoteHost := '192.168.10.10';
+nRemotePort := 7142;
+
+
+
+IF gvl1.socketconnectknop = TRUE THEN
+	bExecute := TRUE;
+hSocket := hSocket2;
+
+END_IF
+
+IF GVL1.socketsendknop = TRUE THEN
+	hSocket := hSocket2;
+	pSrc := Beamer_Projectorscherm.BeamerAAN;
+	bExecute2 := TRUE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="SendCommands">
+      <LineId Id="5" Count="0" />
+      <LineId Id="98" Count="1" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="56" Count="2" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="102" Count="0" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="184" Count="0" />
+      <LineId Id="183" Count="0" />
+      <LineId Id="103" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

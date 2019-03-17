@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <POU Name="Decoder" Id="{c5714283-da61-4d19-a3a6-cceea5bf9789}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Decoder
+VAR
+ 	FB_Decoder : MCS1608_Payload_Decoder;
+    //GenSens
+ 	Status     			:BYTE;      // Content Depends on Message ID == for future use
+	BaromBar			:REAL;      // Air Pressure in mBar
+	Temp1   			:REAL;     	// in 0,01 degC
+	Humidity   			:BYTE;      // Relative Humidity in %
+	LevelX     			:SINT;      // Inverse Sinus of Spirit Level in Deg X-Direction -128 = -90 Degr .. +127 = +90 Degr
+	LevelY     			:SINT;      // Inverse Sinus of Spirit Level in Deg Y-Direction -128 = -90 Degr .. +127 = +90 Degr
+	LevelZ     			:SINT;      // Inverse Sinus of Spirit Level in Deg Z-Direction -128 = -90 Degr .. +127 = +90 Degr
+	VibAmp     			:USINT;     // Amplitude of Vibration Detected == Future
+	VibFreq    			:USINT;     // Approx. Frequency of Vibration Detected in Hz == Future
+
+
+
+	//Tracking
+	Start				:BOOL;// Start Message
+	Moving				:BOOL;// Object Moving
+	Stop				:BOOL;// Object Stopped
+	Vibr				:BOOL;// Vibration Detected
+	Temp2				:REAL;// Temperature in 0,01 degC
+	GPSFixAge			:BYTE;// bit 0..7 = Age of last GPS Fix in Minutes,
+	SatCnt_HiLL			:BYTE;// bit 0..4 = SatInFix, bit5 Latitude 25 bit 6,7 = Longitude 25,26
+	Lat					:REAL;
+	Lon					:REAL;
+	
+	//Alarm
+	GravRotAl		:BOOL;	// Gravity Rotation Detected
+	MagRot			:BOOL;	// Magnetic Rotation Detected
+	MotAlarm		:BOOL;	// Motion Alarm Detected
+	GeoFenceAl		:BOOL;	// GeoFence Violation Detected
+	VibrAl			:BOOL;	// Vibration Alarm Detected
+	ShockAl			:BOOL;	// Shock Alarm (future use)
+	DigIn1Al		:BOOL;	// Digin1 Alarm Detected
+	DigIn2Al		:BOOL;	// Digin2 Alarm Detected
+	Temp			:REAL;	// Temperature in 0,01 Celcius
+	Hum				:BYTE;	// Relative Humidity in %
+	BaromBar2		:REAL;	// Air Pressure in Mbar
+	
+	Alarm1 : Alarm; 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[FB_Decoder(dataString := PayloadDecoded);
+
+CASE FB_Decoder.MsgID OF 
+	FB_Decoder.ID_Tracking:
+		//Start := FB_Decoder.Tracking.Start;
+		Moving := FB_Decoder.Tracking.Moving;
+		Stop := FB_Decoder.Tracking.Stop;
+		Vibr := FB_Decoder.Tracking.Vibr;
+		Temp2 := FB_Decoder.Tracking.Temp;
+		GPSFixAge := FB_Decoder.Tracking.GPSFixAge;
+		SatCnt_HiLL	:= FB_Decoder.Tracking.SatCnt_HiLL;
+		Lat	:= FB_Decoder.Tracking.Lat;
+		Lon	:= FB_Decoder.Tracking.Lon;
+	FB_Decoder.ID_Alarm:
+		Alarm1.MotAlarm := FB_Decoder.Alarm.MotAlarm;
+	FB_Decoder.ID_GenSens:
+		Status := FB_Decoder.GenSens.Status;
+		BaromBar := FB_Decoder.GenSens.BaromBar;
+		Temp := FB_Decoder.GenSens.Temp;
+		Humidity := FB_Decoder.GenSens.Humidity;
+		LevelX := FB_Decoder.GenSens.LevelX;
+		LevelY := FB_Decoder.GenSens.LevelY;
+		LevelZ := FB_Decoder.GenSens.LevelZ;
+		VibAmp := FB_Decoder.GenSens.VibAmp;
+		VibFreq := FB_Decoder.GenSens.VibFreq;
+END_CASE
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="Decoder">
+      <LineId Id="48" Count="28" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

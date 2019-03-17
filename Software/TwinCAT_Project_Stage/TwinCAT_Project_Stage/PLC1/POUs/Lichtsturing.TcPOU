@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.10">
+  <POU Name="Lichtsturing" Id="{8b76a270-81e9-4a90-9705-96adc9cad0aa}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Lichtsturing
+VAR
+	timer1: TOF;
+	timer2: TOF;
+	TP1: TP;
+	TP2 : TP;
+	TP3 : TP;
+	TP4 : TP;
+	TP5 :TP;
+	TP6 : TP;
+	
+	bewegingraam : BOOL;
+	bewegingdeur : BOOL;
+	relaisstandDEUR : BOOL := FALSE;
+	relaisstandDEUR_nieuw : BOOL := FALSE;
+	relaisstandRAAM : BOOL := FALSE;
+	lichtstand2 : BOOL;
+	Lichtstand_Prev2: BOOL;
+	Lichtstand_Prev: BOOL;
+	LichtstatusDEUR : BOOL;
+	LichtstatusBORD : BOOL;
+	
+	
+
+	TONBOOL: BOOL;
+	TON1: TON;
+	rtrigger: R_TRIG;
+	rtrigger2: R_TRIG;
+	rtrigger3: R_TRIG;
+	rtrigger4: R_TRIG;
+	LINKERKNOPULS: BOOL;
+	RECHTERKNOPPULS: BOOL;
+	relaisstandcheckRAAM: BOOL;
+	relaisstandcheckDEUR: BOOL;
+	lichtsterktedeurBerekening: INT := 15000;
+	lichtsterkteraamBerekening: int := 11000;
+	fblicht: FB_Light;
+	fblicht2 : FB_light;
+	relaisstandraam_nieuw: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[timer1(IN:=gvl1.AanwezigheidsdetectorRAAMKANT, PT:= T#300S, Q=>bewegingraam, ET=> );
+timer2(IN:=gvl1.AanwezigheidsdetectorDEURKANT, PT:= T#300S, Q=>bewegingdeur , ET=> );
+
+
+
+fblicht(bOn:= (LichtsterkteDEUR < lichtsterktedeurBerekening AND bewegingdeur = TRUE), 
+bOff:= NOT (LichtsterkteDEUR < lichtsterktedeurBerekening AND bewegingdeur = TRUE), 
+bToggle:=RECHTERKNOP, bLight=> relaisstandDEUR_nieuw);
+
+IF (relaisstandDEUR = NOT relaisstandDEUR_nieuw) THEN
+	TP2.IN := TRUE;
+	relaisstandDEUR := relaisstandDEUR_nieuw;
+ELSE
+	TP2.IN := FALSE;
+END_IF
+
+
+TP2( PT:=T#50MS , Q => GVL1.LichtenDEURKANT);
+
+
+fblicht2(bOn:= (LichtsterkteBORD < lichtsterkteraamBerekening AND bewegingraam = TRUE), 
+bOff:= NOT (LichtsterkteBORD < lichtsterkteraamBerekening AND bewegingraam = TRUE), 
+bToggle:=LINKERKNOP, bLight=> relaisstandraam_nieuw);
+
+IF (relaisstandraam = NOT relaisstandraam_nieuw) THEN
+	TP1.IN := TRUE;
+	relaisstandraam := relaisstandraam_nieuw;
+ELSE
+	TP1.IN := FALSE;
+END_IF
+
+
+TP1( PT:=T#50MS , Q => GVL1.LichtenRAAMKANT);
+
+
+
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="Lichtsturing">
+      <LineId Id="623" Count="1" />
+      <LineId Id="823" Count="0" />
+      <LineId Id="854" Count="0" />
+      <LineId Id="858" Count="0" />
+      <LineId Id="746" Count="0" />
+      <LineId Id="851" Count="0" />
+      <LineId Id="869" Count="1" />
+      <LineId Id="864" Count="1" />
+      <LineId Id="875" Count="0" />
+      <LineId Id="867" Count="1" />
+      <LineId Id="838" Count="0" />
+      <LineId Id="877" Count="1" />
+      <LineId Id="876" Count="0" />
+      <LineId Id="913" Count="0" />
+      <LineId Id="897" Count="14" />
+      <LineId Id="880" Count="0" />
+      <LineId Id="839" Count="1" />
+      <LineId Id="756" Count="1" />
+      <LineId Id="279" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
